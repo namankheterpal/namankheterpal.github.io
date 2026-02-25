@@ -1,0 +1,49 @@
+# North Fin Services
+
+> Professional online tax filing services for individuals and businesses across Canada.
+
+## About
+
+North Fin Services is a Canada-wide online tax filing service. We help individuals, international students, newcomers, self-employed professionals, freelancers, and small business owners file their Canadian taxes accurately and maximize their refunds. We operate 100% online and serve clients in every province and territory.
+
+## Services
+
+- **Personal Tax Filing (T1):** Complete individual income tax return preparation and e-filing with the CRA. For employees, students, newcomers, retirees, and all Canadian residents. Includes T4, T5, T2202, RRSP, capital gains, rental income, and all standard credits and deductions.
+- **GST/HST Return Filing:** Accurate GST/HST return preparation for self-employed individuals, freelancers, and small businesses. Includes input tax credit (ITC) optimization, filing for all reporting periods, and compliance guidance.
+- **Tax Planning & Advisory:** Proactive tax strategies including RRSP and TFSA optimization, income splitting, business structuring and incorporation advice, capital gains planning, and year-end tax reviews.
+
+## Key Features
+
+- Maximum Refund Guarantee
+- 24-48 Hour Turnaround on most returns
+- Multilingual service: English, Hindi, and Punjabi
+- 100% online - no in-person visit required
+- Serving all of Canada
+- Free initial consultation
+- Secure, encrypted document handling
+
+## Important Canadian Tax Deadlines
+
+- February 28: Employers must issue T4 slips
+- March 1: RRSP contribution deadline for previous tax year
+- April 30: Filing deadline for most Canadians and payment due date
+- June 15: Filing deadline for self-employed (balance owing still due April 30)
+
+## Contact
+
+- Website: https://northfinservices.ca
+- Email: info@northfinservices.ca
+- Phone: (123) 456-7890
+
+## Pages
+
+- Home: https://northfinservices.ca/
+- About: https://northfinservices.ca/about
+- Services: https://northfinservices.ca/services
+- Personal Tax Filing: https://northfinservices.ca/services/personal-tax-filing
+- GST/HST Returns: https://northfinservices.ca/services/gst-hst-returns
+- Tax Planning: https://northfinservices.ca/services/tax-planning
+- FAQ: https://northfinservices.ca/faq
+- Contact: https://northfinservices.ca/contact
+- Privacy Policy: https://northfinservices.ca/privacy-policy
+- Terms of Service: https://northfinservices.ca/terms
