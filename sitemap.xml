@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://northfinservices.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://northfinservices.com/about.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northfinservices.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northfinservices.com/faq.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northfinservices.com/services/personal-tax.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://northfinservices.com/services/international-students-newcomers.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://northfinservices.com/services/self-employed-gig.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://northfinservices.com/services/gst-hst-returns.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://northfinservices.com/services/tax-planning.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://northfinservices.com/services/incorporation.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://northfinservices.com/privacy-policy.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://northfinservices.com/terms.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+</urlset>

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# OpenAI search crawler (ChatGPT Search)
+User-agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://northfinservices.com/sitemap.xml
