@@ -4,12 +4,25 @@ import posthog from "posthog-js"
 import { PostHogProvider as PHProvider } from "posthog-js/react"
 import { useEffect } from "react"
 
+declare global {
+  interface Window {
+    gitInfo?: {
+      commitId: string
+      buildTime: string
+    }
+  }
+}
+
 export function PostHogProvider({
   children,
 }: {
   children: React.ReactNode
 }) {
   useEffect(() => {
+    const commitId = process.env.NEXT_PUBLIC_GIT_COMMIT ?? "unknown"
+    const buildTime = process.env.NEXT_PUBLIC_BUILD_TIME ?? "unknown"
+    window.gitInfo = { commitId, buildTime }
+
     const key = process.env.NEXT_PUBLIC_POSTHOG_KEY
     const host = process.env.NEXT_PUBLIC_POSTHOG_HOST
     if (key && host) {
@@ -22,7 +35,7 @@ export function PostHogProvider({
           maskInputOptions: { password: true },
         },
         enable_heatmaps: true,
-      });
+      })
     }
   }, [])
 

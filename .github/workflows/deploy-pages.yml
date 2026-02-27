@@ -19,6 +19,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      NEXT_PUBLIC_GIT_COMMIT: ${{ github.sha }}
+      NEXT_PUBLIC_BUILD_TIME: ${{ github.run_id }}-${{ github.run_attempt }}
       NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
       NEXT_PUBLIC_POSTHOG_HOST: ${{ secrets.NEXT_PUBLIC_POSTHOG_HOST }}
     steps:
