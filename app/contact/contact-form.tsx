@@ -8,7 +8,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -21,6 +21,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -36,17 +37,48 @@ export function ContactForm() {
   });
 
   async function onSubmit(data: ContactFormValues) {
+    setSubmitError(null);
     setIsSubmitting(true);
-    // Simulate form submission - replace with actual API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-    setSubmitted(true);
-    // In production, send data to your email or CRM
-    console.log("Form submitted:", data);
-    track("contact_form_submitted", {
-      name: data.name,
-      has_phone: !!data.phone,
-    });
+
+    const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+    if (!endpoint) {
+      setSubmitError("Form is not configured. Please try again later.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone ?? "",
+        }),
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        setSubmitError(
+          "Something went wrong. Please try again or call us at (639) 895-4000."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
+      setSubmitted(true);
+      track("contact_form_submitted", {
+        name: data.name,
+        has_phone: !!data.phone,
+      });
+    } catch {
+      setSubmitError(
+        "Network error. Please check your connection and try again, or call us at (639) 895-4000."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -108,6 +140,13 @@ export function ContactForm() {
           {...register("phone")}
         />
       </div>
+
+      {submitError && (
+        <div className="flex items-center gap-2 rounded-md border border-destructive/50 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+          <AlertCircle className="h-4 w-4 shrink-0" />
+          {submitError}
+        </div>
+      )}
 
       <Button type="submit" size="lg" disabled={isSubmitting}>
         {isSubmitting ? (
