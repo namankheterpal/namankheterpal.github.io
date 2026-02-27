@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { OfferModal } from "@/components/offer-modal"
+import { PostHogProvider } from "@/app/posthog-provider"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -140,12 +140,13 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppFloat />
-        <OfferModal />
-        <Analytics />
+        <PostHogProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <WhatsAppFloat />
+          <OfferModal />
+        </PostHogProvider>
       </body>
     </html>
   )
