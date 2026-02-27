@@ -17,6 +17,8 @@ concurrency:
 
 jobs:
   build:
+    environment:
+      name: github-pages
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_GIT_COMMIT: ${{ github.sha }}
