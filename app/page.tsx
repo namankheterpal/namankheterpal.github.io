@@ -1,12 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { TrackedLink } from "@/components/tracked-link";
+import { FaqAccordionTracked } from "@/components/faq-accordion-tracked";
 import { CTASection } from "@/components/cta-section";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import {
@@ -187,10 +183,14 @@ export default function HomePage() {
                 size="lg"
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
               >
-                <Link href="/contact">
+                <TrackedLink
+                  href="/contact"
+                  eventName="cta_click"
+                  eventProperties={{ text: "Book Free Consultation", section: "hero" }}
+                >
                   Book Free Consultation
                   <ChevronRight className="ml-1 h-4 w-4" />
-                </Link>
+                </TrackedLink>
               </Button>
               <Button
                 asChild
@@ -198,7 +198,13 @@ export default function HomePage() {
                 size="lg"
                 className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
               >
-                <Link href="/services">Explore Our Services</Link>
+                <TrackedLink
+                  href="/services"
+                  eventName="cta_click"
+                  eventProperties={{ text: "Explore Our Services", section: "hero" }}
+                >
+                  Explore Our Services
+                </TrackedLink>
               </Button>
             </div>
           </div>
@@ -243,9 +249,11 @@ export default function HomePage() {
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {taxSituations.map((situation) => (
-              <Link
+              <TrackedLink
                 key={situation.title}
                 href={situation.href}
+                eventName="service_card_click"
+                eventProperties={{ service_name: situation.title, section: "Tax Situations" }}
                 className="group flex flex-col rounded-xl border border-border bg-background p-6 transition-all hover:border-primary/30 hover:shadow-lg"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary">
@@ -261,14 +269,18 @@ export default function HomePage() {
                   Learn More
                   <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                 </span>
-              </Link>
+              </TrackedLink>
             ))}
           </div>
           <div className="mt-10 flex justify-center">
             <Button asChild size="lg">
-              <Link href="/contact">
+              <TrackedLink
+                href="/contact"
+                eventName="cta_click"
+                eventProperties={{ text: "Get your free assessment", section: "Tax Situations" }}
+              >
                 Get your free assessment
-              </Link>
+              </TrackedLink>
             </Button>
           </div>
         </AnimateOnScroll>
@@ -297,9 +309,11 @@ export default function HomePage() {
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {services.map((service) => (
-              <Link
+              <TrackedLink
                 key={service.title}
                 href={service.href}
+                eventName="service_card_click"
+                eventProperties={{ service_name: service.title, section: "Services Overview" }}
                 className="group flex flex-col rounded-xl border border-border bg-background p-8 transition-all hover:shadow-lg"
               >
                 <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary">
@@ -314,7 +328,7 @@ export default function HomePage() {
                 <span className="mt-5 flex items-center gap-1 text-sm font-semibold text-primary transition-colors group-hover:text-accent">
                   Learn More
                 </span>
-              </Link>
+              </TrackedLink>
             ))}
           </div>
         </AnimateOnScroll>
@@ -358,10 +372,14 @@ export default function HomePage() {
           </div>
           <div className="mt-10 flex justify-center">
             <Button asChild size="lg">
-              <Link href="/contact">
+              <TrackedLink
+                href="/contact"
+                eventName="cta_click"
+                eventProperties={{ text: "Join them - get started free", section: "Why Choose Us" }}
+              >
                 Join them - get started free
                 <ChevronRight className="ml-1 h-4 w-4" />
-              </Link>
+              </TrackedLink>
             </Button>
           </div>
         </AnimateOnScroll>
@@ -421,30 +439,27 @@ export default function HomePage() {
             </p>
           </div>
           <div className="mt-10">
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`faq-${index}`}>
-                  <AccordionTrigger className="text-left text-base">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="leading-relaxed text-muted-foreground">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+            <FaqAccordionTracked faqs={faqs} />
           </div>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild variant="outline">
-              <Link href="/faq">
+              <TrackedLink
+                href="/faq"
+                eventName="cta_click"
+                eventProperties={{ text: "View All FAQs", section: "FAQ Preview" }}
+              >
                 View All FAQs
-              </Link>
+              </TrackedLink>
             </Button>
             <Button asChild>
-              <Link href="/contact">
+              <TrackedLink
+                href="/contact"
+                eventName="cta_click"
+                eventProperties={{ text: "Get a free consultation", section: "FAQ Preview" }}
+              >
                 Get a free consultation
                 <ChevronRight className="ml-1 h-4 w-4" />
-              </Link>
+              </TrackedLink>
             </Button>
           </div>
         </AnimateOnScroll>

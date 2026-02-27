@@ -2,3 +2,5 @@ node_modules
 .next
 out
 .pnpm-store
+.env.local
+.env*.local

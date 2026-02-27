@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { track } from "@/lib/analytics"
 
 const WHATSAPP_URL =
   "https://wa.me/16398954000?text=I%20want%20to%20save%20taxes"
@@ -41,6 +42,7 @@ export function WhatsAppFloat() {
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
         className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
+        onClick={() => track("whatsapp_click", { source: "float" })}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { track } from "@/lib/analytics";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -42,6 +43,10 @@ export function ContactForm() {
     setSubmitted(true);
     // In production, send data to your email or CRM
     console.log("Form submitted:", data);
+    track("contact_form_submitted", {
+      name: data.name,
+      has_phone: !!data.phone,
+    });
   }
 
   if (submitted) {

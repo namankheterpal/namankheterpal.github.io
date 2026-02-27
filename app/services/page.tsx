@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { TrackedLink } from "@/components/tracked-link"
 import { CTASection } from "@/components/cta-section"
 import {
   ChevronRight,
@@ -147,10 +148,14 @@ export default function ServicesPage() {
                     {service.description}
                   </p>
                   <Button asChild className="mt-6">
-                    <Link href={service.href}>
+                    <TrackedLink
+                      href={service.href}
+                      eventName="service_card_click"
+                      eventProperties={{ service_name: service.title, section: "Services" }}
+                    >
                       Learn More
                       <ChevronRight className="ml-1 h-4 w-4" />
-                    </Link>
+                    </TrackedLink>
                   </Button>
                 </div>
                 <div className="flex-1">
@@ -174,9 +179,13 @@ export default function ServicesPage() {
           </div>
           <div className="mt-12 flex justify-center">
             <Button asChild size="lg">
-              <Link href="/contact">
+              <TrackedLink
+                href="/contact"
+                eventName="cta_click"
+                eventProperties={{ text: "Get started for free", section: "Services" }}
+              >
                 Get started for free
-              </Link>
+              </TrackedLink>
             </Button>
           </div>
         </div>

@@ -2,13 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { CTASection } from "@/components/cta-section";
+import { FaqAccordion } from "./faq-accordion";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
@@ -230,30 +225,7 @@ export default function FAQPage() {
       {/* FAQ Content */}
       <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-3xl px-4 lg:px-8">
-          <div className="flex flex-col gap-12">
-            {faqCategories.map((category) => (
-              <div key={category.title}>
-                <h2 className="mb-6 text-xl font-bold text-foreground">
-                  {category.title}
-                </h2>
-                <Accordion type="single" collapsible className="w-full">
-                  {category.faqs.map((faq, index) => (
-                    <AccordionItem
-                      key={index}
-                      value={`${category.title}-${index}`}
-                    >
-                      <AccordionTrigger className="text-left text-base">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="leading-relaxed text-muted-foreground">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            ))}
-          </div>
+          <FaqAccordion categories={faqCategories} />
           <div className="mt-10 flex justify-center">
             <Button asChild size="lg">
               <Link href="/contact">
