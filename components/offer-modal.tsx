@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { track } from "@/lib/analytics";
 
 const WHATSAPP_URL =
   "https://wa.me/16398954000?text=I%20want%20to%20save%20taxes";
@@ -13,6 +15,7 @@ const OFFER_DISMISSED_KEY = "northfin-offer-dismissed";
 
 export function OfferModal() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const dismissed = sessionStorage.getItem(OFFER_DISMISSED_KEY);
@@ -22,12 +25,21 @@ export function OfferModal() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (open) {
+      track("offer_modal_shown", { page: pathname ?? "/" });
+    }
+  }, [open, pathname]);
+
   return (
     <Dialog
       open={open}
       onOpenChange={(o) => {
         setOpen(o);
-        if (!o) sessionStorage.setItem(OFFER_DISMISSED_KEY, "true");
+        if (!o) {
+          sessionStorage.setItem(OFFER_DISMISSED_KEY, "true");
+          track("offer_modal_dismissed", { page: pathname ?? "/" });
+        }
       }}
     >
       <DialogContent
@@ -86,6 +98,7 @@ export function OfferModal() {
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 block"
+              onClick={() => track("whatsapp_click", { source: "offer_modal" })}
             >
               <Button
                 size="lg"

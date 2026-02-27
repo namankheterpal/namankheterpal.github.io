@@ -1,6 +1,10 @@
+"use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { track } from "@/lib/analytics"
 
 interface CTASectionProps {
   title?: string
@@ -18,6 +22,7 @@ export function CTASection({
   variant = "default",
 }: CTASectionProps) {
   const isDark = variant === "dark"
+  const pathname = usePathname()
 
   return (
     <section
@@ -50,7 +55,16 @@ export function CTASection({
                 : ""
             }
           >
-            <Link href={buttonHref}>
+            <Link
+              href={buttonHref}
+              onClick={() =>
+                track("cta_click", {
+                  text: buttonText,
+                  section: title,
+                  page: pathname ?? "/",
+                })
+              }
+            >
               {buttonText}
               <ChevronRight className="ml-1 h-4 w-4" />
             </Link>

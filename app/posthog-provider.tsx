@@ -17,7 +17,12 @@ export function PostHogProvider({
         api_host: host,
         capture_pageview: true,
         capture_pageleave: true,
-      })
+        session_recording: {
+          maskAllInputs: false,
+          maskInputOptions: { password: true },
+        },
+        enable_heatmaps: true,
+      });
     }
   }, [])
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { TrackedLink } from "@/components/tracked-link";
 import { CTASection } from "@/components/cta-section";
 import {
   ChevronRight,
@@ -122,9 +123,13 @@ export default function AboutPage() {
         </div>
         <div className="mt-8 flex justify-center">
           <Button asChild size="lg">
-            <Link href="/contact">
+            <TrackedLink
+              href="/contact"
+              eventName="cta_click"
+              eventProperties={{ text: "Start with a free chat", section: "About Stats" }}
+            >
               Start with a free chat
-            </Link>
+            </TrackedLink>
           </Button>
         </div>
       </section>
@@ -237,10 +242,14 @@ export default function AboutPage() {
           </div>
           <div className="mt-10 flex justify-center">
             <Button asChild size="lg">
-              <Link href="/contact">
+              <TrackedLink
+                href="/contact"
+                eventName="cta_click"
+                eventProperties={{ text: "Work with us - free consultation", section: "About Values" }}
+              >
                 Work with us - free consultation
                 <ChevronRight className="ml-1 h-4 w-4" />
-              </Link>
+              </TrackedLink>
             </Button>
           </div>
         </div>

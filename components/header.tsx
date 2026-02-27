@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
+import { track } from "@/lib/analytics"
 import { Menu, ChevronDown, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -103,6 +104,7 @@ export function Header() {
           <a
             href="tel:+16398954000"
             className="flex items-center gap-1.5 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+            onClick={() => track("phone_call_click", { source: "header" })}
           >
             <Phone className="h-4 w-4" />
             <span>(639) 895-4000</span>
@@ -163,6 +165,7 @@ export function Header() {
               <a
                 href="tel:+16398954000"
                 className="flex items-center gap-2 text-sm text-muted-foreground"
+                onClick={() => track("phone_call_click", { source: "header_mobile" })}
               >
                 <Phone className="h-4 w-4" />
                 (639) 895-4000

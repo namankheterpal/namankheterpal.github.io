@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Globe, Mail, Phone, Instagram } from "lucide-react";
+import { track } from "@/lib/analytics";
 
 const footerLinks = {
   services: [
@@ -120,6 +123,7 @@ export function Footer() {
               <a
                 href="tel:+16398954000"
                 className="flex items-center gap-2 text-sm text-primary-foreground/70 transition-colors hover:text-primary-foreground"
+                onClick={() => track("phone_call_click", { source: "footer" })}
               >
                 <Phone className="h-4 w-4 shrink-0" />
                 (639) 895-4000
